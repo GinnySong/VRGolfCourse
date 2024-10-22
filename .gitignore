@@ -9,7 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-
+/[Aa]ssets/[Ll]argeAssets/
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -80,7 +80,8 @@ crashlytics-build.properties
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 
 # Thumbnails
