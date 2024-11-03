@@ -9,27 +9,35 @@ public class SeatEnter : MonoBehaviour
     public GameObject cart;
 
     private bool isSitting;
-    private Vector3 positionOffset = new Vector3(0, 1, 0);
-    private Vector3 rotationOffset = new Vector3(-70, 0, 0);
+    private Collider playerCollider;
 
     void Start()
     {
         isSitting = false;
+        playerCollider = player.GetComponent<Collider>();
     }
 
     void Update()
     {
         if (isSitting)
         {
-            player.transform.position = seatPosition.position + positionOffset;
-            player.transform.rotation = seatPosition.rotation * Quaternion.Euler(rotationOffset);
+            player.transform.position = seatPosition.position;
+            player.transform.rotation = seatPosition.rotation;
         }
     }
 
     public void SitDown()
     {
-        isSitting = true;
-        player.transform.position = seatPosition.position + positionOffset;
-        player.transform.rotation = seatPosition.rotation * Quaternion.Euler(rotationOffset);
+        isSitting = !isSitting;
+
+        if (isSitting)
+        {
+            player.transform.position = seatPosition.position;
+            player.transform.rotation = seatPosition.rotation;
+            playerCollider.enabled = false;
+        } else
+        {
+            playerCollider.enabled = true;
+        }
     }
 }
