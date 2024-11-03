@@ -412,6 +412,8 @@ GameObject:
   m_Component:
   - component: {fileID: 47655451}
   - component: {fileID: 47655452}
+  - component: {fileID: 47655454}
+  - component: {fileID: 47655453}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Ball
@@ -455,6 +457,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12551117, y: 1, z: 0.13106728}
   m_Center: {x: 0.000579834, y: 0, z: -0.008003712}
+--- !u!114 &47655453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47655450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf4e84f17eee498f80d9085cf06f09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &47655454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47655450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0b95301f2a54116b33f6076c8ef02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 47655453}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &153506244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517023934}
+  - component: {fileID: 1517023935}
   m_Layer: 0
   m_Name: Hole
   m_TagString: Untagged
@@ -1662,6 +1704,18 @@ Transform:
   - {fileID: 47655451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1517023935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517023933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf4e84f17eee498f80d9085cf06f09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1706275622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +2043,7 @@ GameObject:
   - component: {fileID: 1879069897}
   - component: {fileID: 1879069896}
   - component: {fileID: 1879069895}
+  - component: {fileID: 1879069900}
   - component: {fileID: 1879069899}
   m_Layer: 6
   m_Name: Hole
@@ -2100,10 +2155,10 @@ MonoBehaviour:
   onTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1879069899}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
+      - m_Target: {fileID: 1879069900}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2112,6 +2167,18 @@ MonoBehaviour:
           m_StringArgument: You Win
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1879069900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879069894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf4e84f17eee498f80d9085cf06f09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1975597997
 GameObject:
   m_ObjectHideFlags: 0
