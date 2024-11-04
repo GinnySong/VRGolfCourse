@@ -12,7 +12,7 @@ public class CartDriver : MonoBehaviour
     public float maxSpeed = 20;
     public float steeringRange = 30;
     public float steeringRangeAtMaxSpeed = 10;
-    public float centreOfGravityOffset = -1f;
+    public float centreOfGravityOffset = -1f;    
 
     WheelDriver[] wheels;
     Rigidbody rigidBody;
@@ -29,9 +29,8 @@ public class CartDriver : MonoBehaviour
         wheels = GetComponentsInChildren<WheelDriver>();
     }
 
-    private void OnMove(InputValue movementValue)
+    public void Move(Vector2 movementVector)
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
