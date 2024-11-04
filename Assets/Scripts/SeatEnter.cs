@@ -6,7 +6,6 @@ public class SeatEnter : MonoBehaviour
 {
     public Transform seatPosition;
     public GameObject player;
-    public GameObject cart;
 
     private bool isSitting;
     private Collider playerCollider;
@@ -28,16 +27,18 @@ public class SeatEnter : MonoBehaviour
 
     public void SitDown()
     {
-        isSitting = !isSitting;
+        isSitting = true;
+        player.transform.position = seatPosition.position;
+        player.transform.rotation = seatPosition.rotation;
+        playerCollider.enabled = false;
+    }
 
-        if (isSitting)
-        {
-            player.transform.position = seatPosition.position;
-            player.transform.rotation = seatPosition.rotation;
-            playerCollider.enabled = false;
-        } else
-        {
-            playerCollider.enabled = true;
-        }
+    public void StandUp()
+    {
+        isSitting = false;
+        print("in Stand Up");
+        player.transform.position = seatPosition.position + (Vector3.left * 2);
+        player.transform.rotation = seatPosition.rotation;
+        playerCollider.enabled = true;
     }
 }
