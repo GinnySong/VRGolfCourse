@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4501013997529035663}
   - component: {fileID: 1742477757818362613}
   m_Layer: 0
-  m_Name: cart 2.0
+  m_Name: cart 2.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 1496633148319785948}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 9.313226e-10, z: -9.313226e-10, w: 0.7071068}
-  m_LocalPosition: {x: -0.24723156, y: 0.71147174, z: 0.6396068}
+  m_LocalPosition: {x: -0.177, y: 0.71147174, z: 0.466}
   m_LocalScale: {x: 0.5, y: 0.021428566, z: 0.50000006}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1045,7 +1045,7 @@ Transform:
   m_GameObject: {fileID: 4812216266982100039}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7070193, y: 0.011123135, z: 0.011123135, w: 0.7070193}
-  m_LocalPosition: {x: 0.39888543, y: 10.299935, z: 0.3211664}
+  m_LocalPosition: {x: 0.403, y: 10.299935, z: 0.404}
   m_LocalScale: {x: 0.1921772, y: 0.009168966, z: 1.9227345}
   m_ConstrainProportionsScale: 0
   m_Children: []
