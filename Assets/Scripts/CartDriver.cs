@@ -12,7 +12,10 @@ public class CartDriver : MonoBehaviour
     public float maxSpeed = 20;
     public float steeringRange = 30;
     public float steeringRangeAtMaxSpeed = 10;
-    public float centreOfGravityOffset = -1f;    
+    public float centreOfGravityOffset = -1f;
+    public float forwardSpeed;
+    public bool isAccelerating;
+    public SteeringWheel steeringWheel;
 
     WheelDriver[] wheels;
     Rigidbody rigidBody;
@@ -44,7 +47,7 @@ public class CartDriver : MonoBehaviour
 
         // Calculate current speed in relation to the forward direction of the car
         // (this returns a negative number when traveling backwards)
-        float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.velocity);
+        forwardSpeed = Vector3.Dot(transform.forward, rigidBody.velocity);
 
 
         // Calculate how close the car is to top speed
@@ -59,9 +62,9 @@ public class CartDriver : MonoBehaviour
         // (the car steers more gently at top speed)
         float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, speedFactor);
 
-        // Check whether the user input is in the same direction 
-        // as the car's velocity
-        bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
+        // This should be true when the user's hand is on the wheel and
+        //  the acceleration is greater than zero
+        isAccelerating = (steeringWheel.acceleration > 0.0f) && (steeringWheel.tracking);
 
         foreach (var wheel in wheels)
         {

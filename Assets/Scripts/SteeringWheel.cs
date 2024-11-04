@@ -9,16 +9,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class SteeringWheel : MonoBehaviour
 {
     public Transform hand_transform;
-    private Boolean tracking;
+    public bool tracking;
     private float angle_turned;
     private float old_angle;
     private float total_angle;
-    private float acceleration;
+    public float acceleration;
     private Vector2 prev_handpos;
     public Vector2 movement;
     public CartDriver Cart;
 
-    //public TextMeshProUGUI display;
+    // public TextMeshProUGUI display;
 
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class SteeringWheel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tracking) {
+        if (tracking && acceleration > 0.0f) {
             UpdateAngle();
             UpdateMovement();
         }

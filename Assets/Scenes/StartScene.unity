@@ -228,6 +228,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
   m_PrefabInstance: {fileID: 166230714}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &388724834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2441241316290291640, guid: 82c80c7be5492f2448705fb614b6dbac, type: 3}
+  m_PrefabInstance: {fileID: 4816426317571397575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5dcf835734328e44bb5416b5e38c4f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &481659247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1208,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 166230715}
+    - target: {fileID: 7083278273842090279, guid: 82c80c7be5492f2448705fb614b6dbac, type: 3}
+      propertyPath: steeringWheel
+      value: 
+      objectReference: {fileID: 388724834}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
