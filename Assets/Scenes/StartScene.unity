@@ -223,6 +223,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1129376584}
   m_SourcePrefab: {fileID: 100100000, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+--- !u!1 &166230715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+  m_PrefabInstance: {fileID: 166230714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &481659247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1172,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 725965200454677416, guid: 6059b4c4c5b0841b699945f2ad05dfce, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 166230715}
     - target: {fileID: 1153428218387279609, guid: 6059b4c4c5b0841b699945f2ad05dfce, type: 3}
       propertyPath: m_Name
       value: cart 2.5
