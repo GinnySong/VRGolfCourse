@@ -38,9 +38,13 @@ public class SwingCalculator : MonoBehaviour
         if (TrackingSwing) {
             UpdateHistory();
         } else if (SwingCooldownTimer >= 0) {
+            // Timer in place so ball isn't hit twice
             SwingCooldownTimer--;
         } else {
             TrackingSwing = true;
+            // Necessary to set after a delay so that the club does not
+            // impart friction on the ball
+            BallScript.ReadyToHit = false;
         }
     }
 
@@ -60,13 +64,14 @@ public class SwingCalculator : MonoBehaviour
         {
             HitBall();
             TrackingSwing = false;
-            SwingCooldownTimer = 10;
+            SwingCooldownTimer = 5;
         }
     }
 
     public void HitBall()
     {
         // Calculate magnitude of the past two swing position changes
+        print("Club collide");
         Vector3 gapOne = SwingHistory[1] - SwingHistory[0];
         Vector3 gapTwo = SwingHistory[2] - SwingHistory[1];
 

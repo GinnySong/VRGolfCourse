@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BallPhysics : MonoBehaviour
 {
-    public Rigidbody ball;
+    public Rigidbody Ball;
+
+    public bool ReadyToHit = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -17,33 +19,35 @@ public class BallPhysics : MonoBehaviour
         
     }
 
-    void OnTriggerStay(Collider other)
+
+    public void OnTriggerStay(Collider other)
     {
-        float friction = other.material.dynamicFriction;
-        Vector3 friction_force = ball.velocity * friction * -0.2f;
-        friction_force.y = friction_force.y / 2;
-        ball.AddForce(friction_force);
-        ball.AddTorque(ball.angularVelocity * friction * -0.2f);
-        if (ball.velocity.magnitude < 0.3) {
-            FreezeBall();
+        if (!ReadyToHit) {
+            float friction = other.material.dynamicFriction;
+            Vector3 friction_force = Ball.velocity * friction * -0.2f;
+            friction_force.y = friction_force.y / 2;
+            Ball.AddForce(friction_force);
+            Ball.AddTorque(Ball.angularVelocity * friction * -0.2f);
+            if (Ball.velocity.magnitude < 0.3) {
+                FreezeBall();
+            }
         }
     }
     
     public void FreezeBall()
     {
-        ball.constraints = RigidbodyConstraints.FreezeAll;
-        ball.maxAngularVelocity = 0;
+        Ball.constraints = RigidbodyConstraints.FreezeAll;
+        Ball.maxAngularVelocity = 0;
+        ReadyToHit = true;
     }
 
     public void UnfreezeBall()
     {
-        ball.maxAngularVelocity = 7;
-        ball.constraints = RigidbodyConstraints.None;
+        Ball.maxAngularVelocity = 7;
+        Ball.constraints = RigidbodyConstraints.None;
     }
-    void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Clubface") {
-            UnfreezeBall();
-        }
+        
     }
 }
