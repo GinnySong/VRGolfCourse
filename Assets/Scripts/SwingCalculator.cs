@@ -38,7 +38,7 @@ public class SwingCalculator : MonoBehaviour
         if (TrackingSwing) {
             UpdateHistory();
         } else if (SwingCooldownTimer >= 0) {
-            // Timer in place so ball isn't hit twice
+            // Timer in place so ball isn't hit twice accidentally
             SwingCooldownTimer--;
         } else {
             TrackingSwing = true;
