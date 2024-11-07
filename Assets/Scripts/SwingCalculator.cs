@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class SwingCalculator : MonoBehaviour
 {
     public Rigidbody Ball;
+    public BallPhysics BallScript;
 
     private bool TrackingSwing;
 
@@ -38,6 +39,8 @@ public class SwingCalculator : MonoBehaviour
             UpdateHistory();
         } else if (SwingCooldownTimer >= 0) {
             SwingCooldownTimer--;
+        } else {
+            TrackingSwing = true;
         }
     }
 
@@ -70,6 +73,7 @@ public class SwingCalculator : MonoBehaviour
         float SwingLength = gapOne.magnitude + gapTwo.magnitude;
         Vector3 SwingDirection = Clubface.transform.forward;
 
+        BallScript.UnfreezeBall();
         Ball.AddForce(SwingDirection * (SwingLength * SwingMultiplier));
     }
 }
