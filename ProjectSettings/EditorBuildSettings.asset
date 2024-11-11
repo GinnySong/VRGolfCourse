@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DrivingRange.unity
     guid: 213fdb7b84ccf4442a08d4a39fa08255
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Hole 1.unity
     guid: e53f4c4f5000c6546a08954dc1e5762a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Hole 2.unity
     guid: 96d131f587a9a47958f6ff8120c73625
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Hole 3.unity
     guid: 8698a00d9562f41da905980406263db2
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Hole 4.unity
     guid: 5ff380b1a0aa648caadbc8dfb4153d85
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Hole 5.unity
     guid: b0be22c6bfcae4f2a8112a3cd5c294e9
   - enabled: 0
