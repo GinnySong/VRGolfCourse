@@ -28,7 +28,7 @@ public class SeatEnter : MonoBehaviour
     public void SitDown()
     {
         isSitting = true;
-        player.transform.position = seatPosition.position;
+        player.transform.position = seatPosition.position + (Vector3.down * 4);
         player.transform.rotation = seatPosition.rotation;
         playerCollider.enabled = false;
     }
@@ -36,7 +36,6 @@ public class SeatEnter : MonoBehaviour
     public void StandUp()
     {
         isSitting = false;
-        print("in Stand Up");
         player.transform.position = seatPosition.position + (Vector3.left * 2);
         player.transform.rotation = seatPosition.rotation;
         playerCollider.enabled = true;
