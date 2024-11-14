@@ -10,6 +10,7 @@ public class RescueBall : MonoBehaviour
 
     public void Respawn()
     {
+        ball.constraints = RigidbodyConstraints.None;
         ball.velocity = Vector3.zero;
         ball.position = tee.position;
     }
