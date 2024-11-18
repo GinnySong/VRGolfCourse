@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class TriggerEvents : MonoBehaviour
 {
     public UnityEvent onTrigger;
+    public GameObject messageText;
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Ball"))
@@ -15,6 +17,14 @@ public class TriggerEvents : MonoBehaviour
             {
                 onTrigger.Invoke();
             }
+        }
+    }
+
+    public void DisplayMessage()
+    {
+        if (messageText != null)
+        {
+            messageText.gameObject.SetActive(true);  // Ensure the text is visible
         }
     }
 }
