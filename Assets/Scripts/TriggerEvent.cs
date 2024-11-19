@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class TriggerEvents : MonoBehaviour
 {
     public UnityEvent onTrigger;
-    public GameObject messageText;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -20,11 +19,11 @@ public class TriggerEvents : MonoBehaviour
         }
     }
 
-    public void DisplayMessage()
+    public void ToggleObject(GameObject obj)
     {
-        if (messageText != null)
+        if (obj != null)
         {
-            messageText.gameObject.SetActive(true);  // Ensure the text is visible
+            obj.SetActive(true);
         }
     }
 }
