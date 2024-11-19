@@ -6,8 +6,9 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class SteeringWheel : MonoBehaviour
+public class Throttle : MonoBehaviour
 {
+    public SteeringWheel WheelScript;
     public Transform hand_transform;
     public bool tracking;
     private float angle_turned;
@@ -15,8 +16,6 @@ public class SteeringWheel : MonoBehaviour
     private float total_angle;
     public float acceleration;
     private Vector2 prev_handpos;
-    public Vector2 movement;
-    public CartDriver Cart;
 
     // public TextMeshProUGUI display;
 
@@ -35,7 +34,7 @@ public class SteeringWheel : MonoBehaviour
     {
         if (tracking) {
             UpdateAngle();
-            UpdateMovement();
+            UpdateAcceleration();
         }
     }
 
@@ -47,12 +46,7 @@ public class SteeringWheel : MonoBehaviour
 
     public void StopTracking()
     {
-        tracking = false;
-    }
-
-    public void SetAcceleration(float value)
-    {
-        acceleration = value;
+        Start();
     }
 
     void UpdateAngle()
@@ -62,18 +56,17 @@ public class SteeringWheel : MonoBehaviour
         angle_turned = old_angle + Vector2.SignedAngle(prev_handpos, hand_2d_norm);
         prev_handpos = hand_2d_norm;
         old_angle = angle_turned;
-        if(-360 < total_angle + angle_turned && total_angle + angle_turned < 360) {
+        if(-30 < total_angle + angle_turned && total_angle + angle_turned < 30) {
             total_angle += angle_turned;
             transform.RotateAround(transform.position, transform.TransformDirection(0, -1, 0), angle_turned);
         }
         // SetText(total_angle, angle_turned);
     }
 
-    void UpdateMovement()
+    void UpdateAcceleration()
     {
-        float movementX = total_angle / 360.0f;
-        movement = new Vector2(movementX, acceleration);
-        Cart.Move(movement);
+        acceleration = total_angle / 30.0f;
+        WheelScript.SetAcceleration(acceleration);
     }
 
     // void SetText(float angle, float change)
