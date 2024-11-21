@@ -1632,8 +1632,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8838135206697848219, guid: a22615346aeed4ca1bdf11398a1256dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1042876324}
   m_SourcePrefab: {fileID: 100100000, guid: a22615346aeed4ca1bdf11398a1256dc, type: 3}
+--- !u!1 &1042876323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8838135206697848219, guid: a22615346aeed4ca1bdf11398a1256dc, type: 3}
+  m_PrefabInstance: {fileID: 1042876322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1042876324
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042876323}
+  m_Material: {fileID: 13400000, guid: eaa1e116d1563a54f9480a4f88b81c1e, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3081568838370315337, guid: a22615346aeed4ca1bdf11398a1256dc, type: 3}
 --- !u!1 &1062917425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,7 +1691,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062917425}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d43222f8e9e0d9d4898dd021bed5426d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2074,7 +2104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b340f41381248417b81c8055d8d9b2c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.8
+      value: 2.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b340f41381248417b81c8055d8d9b2c0, type: 3}
       propertyPath: m_LocalRotation.w
