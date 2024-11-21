@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Ball
   - Club
-  - 'Cart '
   layers:
   - Default
   - TransparentFX
