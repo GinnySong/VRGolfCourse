@@ -2256,6 +2256,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4636401134172924357, guid: 0d8b0b08acbd18f4f8e4aa4968dba386, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b9e1efae1dfc7ef4c98556646b9fc570, type: 2}
     - target: {fileID: 5645519517383431954, guid: 0d8b0b08acbd18f4f8e4aa4968dba386, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6099528
@@ -2309,6 +2313,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275731691870012785, guid: 0d8b0b08acbd18f4f8e4aa4968dba386, type: 3}
+      propertyPath: knob
+      value: 
+      objectReference: {fileID: 1837885934}
+    - target: {fileID: 6275731691870012785, guid: 0d8b0b08acbd18f4f8e4aa4968dba386, type: 3}
       propertyPath: WheelScript
       value: 
       objectReference: {fileID: 1588592337}
@@ -2328,6 +2336,11 @@ PrefabInstance:
 --- !u!4 &1837885933 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5645519517383431954, guid: 0d8b0b08acbd18f4f8e4aa4968dba386, type: 3}
+  m_PrefabInstance: {fileID: 1837885932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1837885934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5975758002118383196, guid: 0d8b0b08acbd18f4f8e4aa4968dba386, type: 3}
   m_PrefabInstance: {fileID: 1837885932}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2019734148

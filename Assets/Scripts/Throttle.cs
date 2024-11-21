@@ -16,6 +16,7 @@ public class Throttle : MonoBehaviour
     private float total_angle;
     public float acceleration;
     private Vector2 prev_handpos;
+    public GameObject knob;
 
     // public TextMeshProUGUI display;
 
@@ -27,6 +28,7 @@ public class Throttle : MonoBehaviour
         old_angle = 0.0f;
         prev_handpos = new Vector2(0, -1);
         tracking = false;
+        UpdateAngle();        
     }
 
     // Update is called once per frame
@@ -35,6 +37,11 @@ public class Throttle : MonoBehaviour
         if (tracking) {
             UpdateAngle();
             UpdateAcceleration();
+            if (acceleration > 0) {
+                knob.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+            } else {
+                knob.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            }
         }
     }
 
