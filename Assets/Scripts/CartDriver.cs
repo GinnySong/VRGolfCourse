@@ -11,7 +11,7 @@ public class CartDriver : MonoBehaviour
     public float brakeTorque = 2000;
     public float maxSpeed = 20;
     public float steeringRange = 30;
-    public float steeringRangeAtMaxSpeed = 10;
+    public float steeringRangeAtMaxSpeed = 30;
     public float centreOfGravityOffset = -1f;
     public float forwardSpeed;
     public bool isAccelerating;
@@ -31,6 +31,7 @@ public class CartDriver : MonoBehaviour
         // Find all child GameObjects that have the WheelControl script attached
         wheels = GetComponentsInChildren<WheelDriver>();
     }
+
 
     public void Move(Vector2 movementVector)
     {

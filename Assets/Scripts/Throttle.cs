@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -15,8 +16,15 @@ public class Throttle : MonoBehaviour
     private float old_angle;
     private float total_angle;
     public float acceleration;
+
+    private Vector2 normal_handpos;
     private Vector2 prev_handpos;
     public GameObject knob;
+
+    private float MAX_ANGLE = 15f;
+    private float BRAKE_ANGLE = -10f;
+    private float MIN_ANGLE = -15f;
+    private Vector2 reset_hand = new Vector2(-0.2f, -0.9f).normalized;
 
     // public TextMeshProUGUI display;
 
@@ -26,15 +34,16 @@ public class Throttle : MonoBehaviour
     {
         total_angle = 0.0f;
         old_angle = 0.0f;
-        prev_handpos = new Vector2(0, -1);
-        tracking = false;
-        UpdateAngle();        
+        prev_handpos = Vector2.down;
+        StopTracking();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (tracking) {
+            Vector3 local_handpos = transform.InverseTransformPoint(hand_transform.position);
+            normal_handpos = new Vector2(local_handpos.x, local_handpos.z).normalized;
             UpdateAngle();
             UpdateAcceleration();
             if (acceleration > 0) {
@@ -53,17 +62,24 @@ public class Throttle : MonoBehaviour
 
     public void StopTracking()
     {
-        Start();
+        tracking = false;
+
+        // Find the total angle needed to put the throttle in brake, convert to radians
+        float angle_needed = MIN_ANGLE + 0.01f - total_angle;
+        angle_needed = angle_needed * Mathf.PI / 180;
+        // Set the "hand position" to turn it back by the needed angle
+        normal_handpos = new Vector2(Mathf.Sin(angle_needed), -Mathf.Cos(angle_needed));
+        UpdateAngle();
+        UpdateAcceleration();
+        knob.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
     }
 
     void UpdateAngle()
     {
-        Vector3 hand_local_pos = transform.InverseTransformPoint(hand_transform.position);
-        Vector2 hand_2d_norm = new Vector2(hand_local_pos.x, hand_local_pos.z).normalized;
-        angle_turned = old_angle + Vector2.SignedAngle(prev_handpos, hand_2d_norm);
-        prev_handpos = hand_2d_norm;
+        angle_turned = old_angle + Vector2.SignedAngle(prev_handpos, normal_handpos);
+        prev_handpos = normal_handpos;
         old_angle = angle_turned;
-        if(-30 < total_angle + angle_turned && total_angle + angle_turned < 30) {
+        if(MIN_ANGLE < total_angle + angle_turned && total_angle + angle_turned < MAX_ANGLE) {
             total_angle += angle_turned;
             transform.RotateAround(transform.position, transform.TransformDirection(0, -1, 0), angle_turned);
         }
@@ -72,7 +88,11 @@ public class Throttle : MonoBehaviour
 
     void UpdateAcceleration()
     {
-        acceleration = total_angle / 30.0f;
+        if (total_angle > BRAKE_ANGLE) {
+            acceleration = Mathf.InverseLerp(BRAKE_ANGLE, MAX_ANGLE, total_angle);
+        } else {
+            acceleration = -1f;
+        }
         WheelScript.SetAcceleration(acceleration);
     }
 
