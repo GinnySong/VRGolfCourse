@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -12,39 +14,53 @@ public class SwingCalculator : MonoBehaviour
     private bool TrackingSwing;
 
     private Vector3[] SwingHistory;
+    private (Vector3 position, Quaternion rotation)[] GhostHistory;
 
     public Transform Clubface;
+    private bool OnCooldown = false;
 
-    private int SwingCooldownTimer = 0;
+    private float SwingCooldownTimer = 0;
 
     private int SwingMultiplier = 20;
     // Start is called before the first frame update
+
+    public GameObject ghost;
+    public GameObject club;
+
+    private int HistoryLength = 5;
+
     void Start()
     {
         TrackingSwing = false;
-        SwingHistory = new Vector3[] {Vector3.zero, Vector3.zero, Vector3.zero};
+        SwingHistory = Enumerable.Repeat(Vector3.zero, HistoryLength).ToArray();
+        GhostHistory = Enumerable.Repeat((club.transform.position, club.transform.rotation), HistoryLength).ToArray();
     }
 
     void UpdateHistory()
     {
-        SwingHistory[2] = SwingHistory[1];
-        SwingHistory[1] = SwingHistory[0];
+        for (int i = HistoryLength; i > 1; i--) {
+            SwingHistory[i - 1] = SwingHistory[i - 2];
+            GhostHistory[i - 1] = GhostHistory[i - 2];
+        }
         SwingHistory[0] = Clubface.position;
+        GhostHistory[0] = (club.transform.position, club.transform.rotation);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (TrackingSwing) {
             UpdateHistory();
-        } else if (SwingCooldownTimer >= 0) {
-            // Timer in place so ball isn't hit twice accidentally
-            SwingCooldownTimer--;
-        } else {
-            TrackingSwing = true;
-            // Necessary to set after a delay so that the club does not
-            // impart friction on the ball
-            BallScript.ReadyToHit = false;
+        } 
+        
+        if (OnCooldown) {
+            BallScript.UnfreezeBall();
+            SwingCooldownTimer += Time.deltaTime;
+            if (SwingCooldownTimer >= 1) {
+                TrackingSwing = true;
+                OnCooldown = false;
+            }
         }
     }
 
@@ -60,25 +76,38 @@ public class SwingCalculator : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Ball") && TrackingSwing)
-        {
+        if (!OnCooldown) {
             HitBall();
             TrackingSwing = false;
-            SwingCooldownTimer = 5;
+            SwingCooldownTimer = 0;
+            OnCooldown = true;
         }
     }
 
     public void HitBall()
     {
         // Calculate magnitude of the past two swing position changes
-        print("Club collide");
-        Vector3 gapOne = SwingHistory[1] - SwingHistory[0];
-        Vector3 gapTwo = SwingHistory[2] - SwingHistory[1];
+        // Put ghost copies of the club
+        
+        float SwingLength = 0;
+        for (int i = 0; i < HistoryLength; i++) {
 
-        float SwingLength = gapOne.magnitude + gapTwo.magnitude;
+            GameObject new_ghost = Instantiate(ghost, GhostHistory[i].position, GhostHistory[i].rotation);
+            new_ghost.GetComponent<SwingGhost>().original = false;
+            new_ghost.SetActive(true);
+            if (i != HistoryLength - 1) {
+                // Find magnitude of gap between swing history positions
+                SwingLength += (SwingHistory[i + 1] - SwingHistory[i]).magnitude;
+            }
+        }
+        // Vector3 gapOne = SwingHistory[1] - SwingHistory[0];
+        // Vector3 gapTwo = SwingHistory[2] - SwingHistory[1];
+
+        //float SwingLength = gapOne.magnitude + gapTwo.magnitude;
         Vector3 SwingDirection = Clubface.transform.forward;
 
         BallScript.UnfreezeBall();
         Ball.AddForce(SwingDirection * (SwingLength * SwingMultiplier));
+        print("Total power: " + (SwingDirection * SwingLength * SwingMultiplier));
     }
 }

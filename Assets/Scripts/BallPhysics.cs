@@ -22,7 +22,7 @@ public class BallPhysics : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (!ReadyToHit) {
+        if (!ReadyToHit && other.tag != "Club") {
             float friction = other.material.dynamicFriction;
             Vector3 friction_force = Ball.velocity * friction * -0.2f;
             friction_force.y = friction_force.y / 2;
@@ -45,9 +45,10 @@ public class BallPhysics : MonoBehaviour
     {
         Ball.maxAngularVelocity = 7;
         Ball.constraints = RigidbodyConstraints.None;
+        ReadyToHit = false;
     }
     public void OnTriggerEnter(Collider other)
     {
-        
+
     }
 }

@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball 2.0 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4818195853453195891, guid: 71159a47f8221eb40b7d24b468b2dd2d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5074668462718548638, guid: 71159a47f8221eb40b7d24b468b2dd2d, type: 3}
       propertyPath: m_Enabled
       value: 1

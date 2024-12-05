@@ -53,6 +53,10 @@ PrefabInstance:
       value: Golf_ball_LowPOly Variant
       objectReference: {fileID: 0}
     - target: {fileID: 804786954997177528, guid: bdba71f8878efa74ebea7bdbd9308589, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 804786954997177528, guid: bdba71f8878efa74ebea7bdbd9308589, type: 3}
       propertyPath: m_TagString
       value: Ball
       objectReference: {fileID: 0}
