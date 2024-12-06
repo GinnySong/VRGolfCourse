@@ -5127,6 +5127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2911132736026252879, guid: 03f703e90b2c04122b2fd79db22b1946, type: 3}
+      propertyPath: takenObject
+      value: 
+      objectReference: {fileID: 8900112498674805304}
     - target: {fileID: 8877030913518127212, guid: 03f703e90b2c04122b2fd79db22b1946, type: 3}
       propertyPath: m_Name
       value: cart
@@ -6206,7 +6210,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1957460088512644008, guid: 101b4605db431f847bf0ddf2be5f01dd, type: 3}
   m_PrefabInstance: {fileID: 8900112498674805303}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8900112498674805304}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbc3669bd4f18a043875c5dbc721cbbf, type: 3}
@@ -6513,6 +6517,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 101b4605db431f847bf0ddf2be5f01dd, type: 3}
+--- !u!1 &8900112498674805304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8725097012173967609, guid: 101b4605db431f847bf0ddf2be5f01dd, type: 3}
+  m_PrefabInstance: {fileID: 8900112498674805303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

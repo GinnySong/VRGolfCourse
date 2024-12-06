@@ -718,6 +718,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2911132736026252879, guid: 03f703e90b2c04122b2fd79db22b1946, type: 3}
+      propertyPath: takenObject
+      value: 
+      objectReference: {fileID: 2141462973}
     - target: {fileID: 8877030913518127212, guid: 03f703e90b2c04122b2fd79db22b1946, type: 3}
       propertyPath: m_Name
       value: cart
@@ -924,7 +928,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2059494723881540822, guid: a3a8999e8cabbf0449b953ed890c1154, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1893804047686685625, guid: a3a8999e8cabbf0449b953ed890c1154, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 9005925436262471274, guid: a3a8999e8cabbf0449b953ed890c1154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1721898556034265292, guid: a3a8999e8cabbf0449b953ed890c1154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8629710788097237821, guid: a3a8999e8cabbf0449b953ed890c1154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6766356464701718186, guid: a3a8999e8cabbf0449b953ed890c1154, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a3a8999e8cabbf0449b953ed890c1154, type: 3}
@@ -1397,7 +1410,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1957460088512644008, guid: 101b4605db431f847bf0ddf2be5f01dd, type: 3}
   m_PrefabInstance: {fileID: 2141462970}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2141462973}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbc3669bd4f18a043875c5dbc721cbbf, type: 3}
@@ -1406,6 +1419,11 @@ MonoBehaviour:
 --- !u!54 &2141462972 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 199839707009270891, guid: 101b4605db431f847bf0ddf2be5f01dd, type: 3}
+  m_PrefabInstance: {fileID: 2141462970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2141462973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8725097012173967609, guid: 101b4605db431f847bf0ddf2be5f01dd, type: 3}
   m_PrefabInstance: {fileID: 2141462970}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
