@@ -24,7 +24,8 @@ public class SwingCalculator : MonoBehaviour
     private int SwingMultiplier = 20;
     // Start is called before the first frame update
 
-    public GameObject ghost;
+    public GameObject club_ghost;
+    public GameObject arrow_ghost;
     public GameObject club;
 
     private int HistoryLength = 5;
@@ -87,27 +88,35 @@ public class SwingCalculator : MonoBehaviour
     public void HitBall()
     {
         // Calculate magnitude of the past two swing position changes
-        // Put ghost copies of the club
-        
-        float SwingLength = 0;
+        // Put ghost copies of the club to show swing arc
+        Transform closest_face = club_ghost.transform.GetChild(0).transform;
+        Vector3 SwingLength = Vector3.zero;
+        float closest_distance = 99999f;
         for (int i = 0; i < HistoryLength; i++) {
-
-            GameObject new_ghost = Instantiate(ghost, GhostHistory[i].position, GhostHistory[i].rotation);
-            new_ghost.GetComponent<SwingGhost>().original = false;
-            new_ghost.SetActive(true);
+            
+            GameObject club_trail = Instantiate(club_ghost, GhostHistory[i].position, GhostHistory[i].rotation);
+            club_trail.GetComponent<SwingGhost>().original = false;
+            club_trail.SetActive(true);
+            // Find closest clubface to the ball for most accurate tracjectory at contact
+            float distance_to_ball = (club_trail.transform.position - Ball.transform.position).magnitude;
+            if (distance_to_ball < closest_distance) {
+                closest_face = club_trail.transform.GetChild(0).transform;
+                closest_distance = distance_to_ball;
+            }
+            
+            // Find magnitude of gap between swing history positions
+            // (One less gap than history length)
             if (i != HistoryLength - 1) {
-                // Find magnitude of gap between swing history positions
-                SwingLength += (SwingHistory[i + 1] - SwingHistory[i]).magnitude;
+                SwingLength -= SwingHistory[i + 1] - SwingHistory[i];
             }
         }
-        // Vector3 gapOne = SwingHistory[1] - SwingHistory[0];
-        // Vector3 gapTwo = SwingHistory[2] - SwingHistory[1];
-
-        //float SwingLength = gapOne.magnitude + gapTwo.magnitude;
-        Vector3 SwingDirection = Clubface.transform.forward;
-
+        // Add force to the ball in the direction of the clubface with the magnitude of the swing parallel to the closest clubface
         BallScript.UnfreezeBall();
-        Ball.AddForce(SwingDirection * (SwingLength * SwingMultiplier));
-        print("Total power: " + (SwingDirection * SwingLength * SwingMultiplier));
+        BallScript.MakeGhost();
+        Vector3 ball_trajectory = closest_face.forward * (Vector3.Dot(SwingLength, closest_face.forward) * SwingMultiplier);
+        Ball.AddForce(ball_trajectory);
+        GameObject trajectory_ghost = Instantiate(arrow_ghost, Ball.position, Quaternion.LookRotation(ball_trajectory));
+        trajectory_ghost.GetComponent<SwingGhost>().original = false;
+        trajectory_ghost.SetActive(true);
     }
 }

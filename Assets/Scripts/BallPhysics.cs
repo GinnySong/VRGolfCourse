@@ -5,6 +5,7 @@ using UnityEngine;
 public class BallPhysics : MonoBehaviour
 {
     public Rigidbody Ball;
+    public GameObject ghost;
 
     public bool ReadyToHit = true;
     // Start is called before the first frame update
@@ -46,6 +47,13 @@ public class BallPhysics : MonoBehaviour
         Ball.maxAngularVelocity = 7;
         Ball.constraints = RigidbodyConstraints.None;
         ReadyToHit = false;
+    }
+
+    public void MakeGhost()
+    {
+        GameObject new_ghost = Instantiate(ghost, transform.position, transform.rotation);
+        new_ghost.GetComponent<SwingGhost>().original = false;
+        new_ghost.SetActive(true);
     }
     public void OnTriggerEnter(Collider other)
     {
