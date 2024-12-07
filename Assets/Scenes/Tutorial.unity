@@ -3054,7 +3054,12 @@ MonoBehaviour:
     Accelerating:
 
     -
-    Grab the throttle bar on the left and push to move forward, or pull to go reverse
+    Grab the throttle bar on the left and push to move forward
+
+    Steering:
+
+    -
+    Grab the red ball on the steering wheel and rotate hand 360* either left or right
 
     Standing
     Up:
@@ -4053,13 +4058,22 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Golf Bag:
 
-    1. Hold the club near the top of the golf bag
+    - Place Club
 
-    2. Wait
-    for the blue club shape to appear in the bag
+    1. Hold the club near the top of the
+    golf bag
 
-    3. Release the club to snap
-    it into place'
+    2. Wait for the blue club shape to appear in the bag
+
+    3. Release
+    the club to snap it into place
+
+    - Take Club
+
+    1. Hover over the club
+
+    2.
+    Press and hold the grab button'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5152,7 +5166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -210, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.244, y: 1.35}
+  m_AnchoredPosition: {x: -10.244, y: 1.668}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1499679299
